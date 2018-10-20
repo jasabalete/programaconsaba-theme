@@ -67,7 +67,7 @@ the_post();
 
                         if ($urlGit) {
                             echo '<h2>Recursos</h2>';
-                            echo "<a href='$urlGit'>Cógigo fuente</a>";
+                            echo "<a href='$urlGit' target='_black'>Cógigo fuente</a>";
                         }
 
                         $download = get_field('pcs_descarga_asociada');
