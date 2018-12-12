@@ -18,6 +18,8 @@ function programaconsaba_setup() {
 	register_nav_menu('menuppal', "Menú principal");
 	// Se registra el menú de la intranet
 	register_nav_menu('intranet-menu', 'Menú Intranet');
+	// Menú legal para el pie de página
+	register_nav_menu('legal-menu', 'Menú Legal' );
 
 	add_shortcode( 'my_cta_compra', 'programaconsaba_texto_compra_shortcode' );
 	add_shortcode( 'my_yt_video', 'programaconsaba_yt_video_shortcode' );

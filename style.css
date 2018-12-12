@@ -61,8 +61,7 @@ footer {
 	border-top: 1px solid #e7e7e7;
 	bottom: 0;
 	color: #555;
-	/* font-family: 'VT323', monospace; */
-	height: 100px;
+	height: 120px;
 	left: 0;
 	padding: 10px 0 10px 0;
 	position: absolute;
@@ -85,7 +84,7 @@ footer .ico-love:hover {
 }
 
 footer .footer-txt{
-	font-size: 20px;
+	font-size: 16px;
 }
 
 footer .footer-txt p {
@@ -93,7 +92,7 @@ footer .footer-txt p {
 }
 
 footer .footer-hecho-en{
-	font-size: 25px;
+	font-size: 20px;
 }
 
 /* Centrado de opciones ul en el navbar (menu) de bootstrap */
@@ -104,6 +103,10 @@ footer .footer-hecho-en{
 		table-layout: fixed;
 		float: none;
 	}
+}
+
+.navbar {
+	margin-bottom: 0;
 }
 
 .navbar-nav>li.item-menu-registro>a {
@@ -338,4 +341,40 @@ footer .footer-hecho-en{
 
 .listado-lecciones li a.selected::before {
 	content: '➤ ';
+}
+
+.contact-btn-send {
+	margin-top: 12px;
+	background-color: #e53d46;
+	border:0;
+	font-family: 'VT323', monospace;
+	font-size: 25px;
+	color: #fff;
+	border: 0;
+	margin-top: 12px;
+	height: 50px;
+}
+
+.contact-btn-send:hover {
+	background-color: #e53d46;
+	border:0;
+}
+
+.legal-menu-class a {
+	color: #777;
+	font-size: 16px;
+}
+
+.legal-menu-class ul {
+	list-style: none;
+	padding: 0;
+}
+
+.legal-menu-class li {
+	display: inline;
+	margin: 15px;
+}
+
+.acerca-de-imagen img{
+	border-radius: 50%;
 }
