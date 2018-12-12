@@ -8,10 +8,20 @@
 
 require_once('inc/wp_bootstrap_navwalker.php');
 
+add_theme_support( 'post-thumbnails' );
+
+add_image_size('list-small-thumb', 160, 90, true);
+add_image_size('list-medium-thumb', 528, 297, true);
+
 function programaconsaba_setup() {
 	// Se registra el menú principal
 	register_nav_menu('menuppal', "Menú principal");
+	// Se registra el menú de la intranet
+	register_nav_menu('intranet-menu', 'Menú Intranet');
+
 	add_shortcode( 'my_cta_compra', 'programaconsaba_texto_compra_shortcode' );
+	add_shortcode( 'my_yt_video', 'programaconsaba_yt_video_shortcode' );
+	add_shortcode( 'my_post_navigator', 'programaconsaba_post_navigator_shortcode' );
 }
 
 add_action( 'after_setup_theme', 'programaconsaba_setup');
@@ -39,7 +49,7 @@ function programaconsaba_pagination(){
 	
 	global $wp_query;
 	
-	$pagination = '	<div class="text-center">
+	$pagination = '	<div class="text-center list-pagination">
 						<nav aria-label="Page navigation">
 							<ul class="pagination">
 								<li class="disabled hidden-xs"><span><span aria-hidden="true">Página ' . $paged . ' de ' . $wp_query->max_num_pages . '</span></span></li>';
@@ -86,30 +96,6 @@ function programaconsaba_template_redirect() {
 
 add_action( 'template_redirect', 'programaconsaba_template_redirect' );
 
-function create_custom_post_type_tutoriales () {
-	register_post_type('pcs_tutoriales',
-		array (
-			'labels' => array (
-				'name' => 'Tutoriales',
-				'singular' => 'Tutorial'
-			),
-			'public' => true,
-			'has_archive' => true,
-			'taxonomies'  => array( 'category' ),
-			'rewrite' => array (
-				'slug' =>'tutoriales'
-			),
-			'menu_icon' => 'dashicons-video-alt3',
-			'supports' => array (
-				'title', 'editor', 'excerpt'
-				// 'title', 'editor', 'comments', 'revisions', 'trackbacks', 'author', 'excerpt', 'page-attributes', 'thumbnail', 'custom-fields', and 'post-formats'
-			)
-		)
-	);
-}
-
-add_action ( 'init', 'create_custom_post_type_tutoriales');
-
 /**
  * Shortcodes
  **/
@@ -117,7 +103,98 @@ function programaconsaba_texto_compra_shortcode() {
 	return '<div class="cta-compra">¿Te gusta lo que ves? ¿Quieres el código fuente? Puedes comprar el código fuente para que te quede todo mucho más claro. <span class="cta-notice">Con la compra me ayudas a dejar esta página libre de publicidad y me animas a seguir creando contenidos</span></div>';
 }
 
+function programaconsaba_yt_video_shortcode ($atts, $content = null) {
+	$iframe = get_field('pcs_youtube_url');
+
+	 // use preg_match to find iframe src
+	 preg_match('/src="(.+?)"/', $iframe, $matches);
+	 $src = $matches[1];
+
+
+	 // add extra params to iframe src
+	 $params = array(
+		 'controls'  => 1,
+		 'hd'        => 1,
+		 'autohide'  => 1,
+		 'showinfo'  => 0
+	 );
+
+	 $new_src = add_query_arg($params, $src);
+
+	 $iframe = str_replace($src, $new_src, $iframe);
+
+
+	 // add extra attributes to iframe html
+	 $attributes = 'frameborder="0"';
+
+	 $iframe = str_replace('></iframe>', ' ' . $attributes . '></iframe>', $iframe);
+
+	return '<div class="embed-container pcs-yt-video">' . $iframe . '</div>';
+}
+
+function programaconsaba_post_navigator_shortcode () {
+	$next_post = get_next_post();
+	$previous_post = get_previous_post();
+	
+	$html  = '<div class="post-navigator">';
+	$html .= '	<div class="previous_next_post_title text-center">';
+	$html .= '		Quizás también te interese';
+	$html .= '	</div>';
+	if ($previous_post) {
+		$html .= '	<div class="row">';
+		$html .= '		<div class="previous_next_post col-md-offset-3 col-md-3 text-center">';
+		$html .= ' 			<a href="' . get_permalink($previous_post->ID) . '" rel="prev">';
+		$html .= 				get_the_post_thumbnail($previous_post->ID, 'list-small-thumb');
+		$html .= '				<span>' . get_the_title($previous_post->ID) . '</span>';
+		$html .= '			</a>';
+		$html .= '		</div>';
+	}
+
+	if ($next_post) {
+		$html .= '		<div class="previous_next_post col-md-3 text-center">';	
+		$html .= ' 			<a href="' . get_permalink($next_post->ID) . '" rel="prev">';
+		$html .= 				get_the_post_thumbnail($next_post->ID, 'list-small-thumb');
+		$html .= '				<span>' . get_the_title($next_post->ID) . '</span>';
+		$html .= '			</a>';
+		$html .= '		</div>';	
+		$html .= '	</div>';
+	}
+
+	$html .= '</div>';
+
+	return $html;
+}
+
+add_filter( 'get_the_archive_title', function ($title) {
+    if ( is_category() ) {
+            $title = single_cat_title( '', false );
+        } elseif ( is_tag() ) {
+            $title = single_tag_title( '', false );
+        } elseif ( is_author() ) {
+            $title = '<span class="vcard">' . get_the_author() . '</span>' ;
+        } elseif ( is_archive() ) {
+            $title = post_type_archive_title( '', false );
+        }
+    return $title;
+});
+
 // Se oculta la barra de administración
 if (!isset($_GET['admin_bar'])){
 	show_admin_bar(false);
+}
+
+// Se añade la opción de menú de logout si el usuario está logado
+add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2);
+
+function add_login_logout_link($items, $args) {
+	// Sólo se muestra el botón de desconectar en el menú activado para el theme_location 'secondary'
+	if(is_user_logged_in() && $args->theme_location === 'intranet-menu'){
+		ob_start();
+			wp_loginout('/');
+			$loginoutlink = ob_get_contents();
+		ob_end_clean();
+			$items .= '<li class="menu-desconectar">'. $loginoutlink .'</li>';
+	}
+	
+	return $items;
 }

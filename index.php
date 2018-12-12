@@ -9,6 +9,12 @@
 get_header(); 
 ?>
 <div class="content-wrapper container-fluid">
+	<header class="page-header">
+				<?php
+				the_archive_title( '<h1 class="page-title">', '</h1>' );
+				the_archive_description( '<div class="archive-description">', '</div>' );
+				?>
+			</header><!-- .page-header -->
 	<div class="col-md-offset-2 col-md-8 col-md-offset-2">
 		<?php
 			if ( have_posts() ) {

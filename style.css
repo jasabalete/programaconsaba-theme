@@ -4,7 +4,7 @@ Theme URI: https://www.programaconsaba.com
 Author: José Antonio Sabalete
 Author URI: https://www.programaconsaba.com
 Description: Tema de Programa con Saba
-Version: v1.3.0
+Version: v1.4.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: 
@@ -33,6 +33,10 @@ header h1 {
 	text-align: center;
 }
 
+.list-pagination {
+	margin-bottom: 100px;
+}
+
 .cta-compra{
 	background-color: #f09426;
 	color: #fff;
@@ -53,15 +57,20 @@ header h1 {
 }
 
 footer {
-	background-color: #333;
+	background-color: #f8f8f8;
+	border-top: 1px solid #e7e7e7;
 	bottom: 0;
-	color: white;
-	font-family: 'VT323', monospace;
+	color: #555;
+	/* font-family: 'VT323', monospace; */
 	height: 100px;
 	left: 0;
 	padding: 10px 0 10px 0;
 	position: absolute;
 	width: 100%;
+}
+
+footer a {
+	color: #e53d46;
 }
 
 footer .ico-love {
@@ -79,6 +88,10 @@ footer .footer-txt{
 	font-size: 20px;
 }
 
+footer .footer-txt p {
+	margin: 0;
+}
+
 footer .footer-hecho-en{
 	font-size: 25px;
 }
@@ -91,6 +104,19 @@ footer .footer-hecho-en{
 		table-layout: fixed;
 		float: none;
 	}
+}
+
+.navbar-nav>li.item-menu-registro>a {
+	border: 1px solid #e7e7e7;
+	border-radius: 23px;
+	color: #e53d46;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	margin-top: 5px;
+}
+
+.navbar-nav>li.item-menu-registro>a::before {
+	content: '➤ ';
 }
 
 /* Detalle de las descargas */
@@ -133,12 +159,12 @@ footer .footer-hecho-en{
 	height: 100%;
 }
 
-.home-list-tutoriales .tutoriales-title {
+.tutoriales-title {
 	border-bottom: 1px solid #e7e7e7;
 	margin-bottom: 15px;
 }
 
-.home-list-tutoriales .tutoriales-title h2 {
+.tutoriales-title h2 {
 	text-align: center;
 }
 
@@ -146,22 +172,170 @@ footer .footer-hecho-en{
 	color: black;
 }
 
-.home-list-tutoriales article header img {
-	width: 100%;
+.article-list {
+	padding: 30px;
 }
 
-.home-list-tutoriales .tutoriales-title h2,
-.home-list-tutoriales article header h2 {
+.file-list {
+	max-width: 2000px;
+	margin: auto;
+}
+
+.article-list header {
+	max-width: 528px; /** tamaño del thumbnail **/
+	padding-top: 10px;
+	margin: auto;
+}
+
+.article-list header img {
+	width: 100%;
+	height: 100%;
+}
+
+.tutoriales-title h2,
+.article-list header h2 {
 	font-family: 'VT323', monospace;
 	font-size: 35px;
 }
 
-.home-list-tutoriales article header h2 a {
+.article-list header a h2 {
 	color: #000;
 	text-decoration: none;
 }
 
-.home-list-tutoriales article .tutorial-excerpt {
+.article-list .tutorial-excerpt {
 	font-family: 'Inconsolata', monospace;
 	font-size: 20px;
+	text-align: center;
+	max-width: 528px; /** tamaño del thumbnail **/
+	margin: auto;
+}
+
+.post-navigator {
+	border-top: 1px solid #e7e7e7;
+	margin-top: 30px;
+	padding-top: 30px;
+	font-family: 'VT323', monospace;
+	font-size: 20px;
+}
+
+.post-navigator .previous_next_post_title {
+	font-size: 32px;
+	margin-bottom: 15px;
+}
+
+.post-navigator span {
+	display: block;
+	max-width: 160px; /** tamaño del thumbnail */
+	margin: auto;
+}
+
+.post-navigator a {
+	color: #000;
+	text-decoration: none;
+}
+
+.banner-ppal {
+	background: 
+		linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+		url(assets/images/programa-con-saba-livecoding.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	font-family: 'Inconsolata', monospace;
+	color:#fff;
+	margin-bottom: 16px;
+}
+
+.btn-cta a{
+	width: 200px;
+	padding: 21px;
+	font-family: 'VT323', monospace;
+	font-size: 35px;
+}
+
+
+.ytp-title-channel-logo {
+	display: none;
+}
+
+/** Formularios de acceso y registro **/
+#edd_register_form legend,
+#edd_login_form legend,
+#edd_profile_editor_form legend {
+	font-family: 'VT323', monospace;
+	font-size: 35px;
+}
+
+.edd_form fieldset {
+	margin-bottom: 25px;
+}
+
+.edd_form input, 
+.edd_form .edd-select {
+	padding: 10px;
+	width: 100%;
+}
+
+.edd_form input[type="submit"] {
+	font-family: 'VT323', monospace;
+	font-size: 25px;
+	background-color:#e53d46;
+	color: #fff;
+	border: 0;
+	margin-top: 12px;
+}
+
+.edd_form input[type="checkbox"] {
+	width: 50px;
+}
+
+/** Menú intranet **/
+.menu-menu-intranet-container ul {
+	list-style: none;
+	padding: 0;
+    margin: 0;
+}
+
+.menu-menu-intranet-container li {
+	display: inline;
+}
+
+.menu-menu-intranet-container li a {
+	padding: 0 10px;
+	text-decoration: none;
+	color: #000;
+}
+
+.menu-menu-intranet-container .menu-desconectar a {
+	color:#e53d46;
+}
+
+/** Zona cursos **/
+.listado-lecciones h3 {
+	font-family: 'VT323', monospace;
+	font-size: 42px;
+}
+
+.listado-lecciones li a {
+	background: #e7e7e7;
+	display: block;
+	color: #777;
+	text-decoration: none;
+	padding: 10px;
+	margin-top: 6px;
+	
+}
+.listado-lecciones li a:hover {
+	background: #eee;
+	border: 1px solid;
+}
+
+.listado-lecciones li a.selected {
+	background: rgb(91,91,91);
+	color: #e7e7e7;
+}
+
+.listado-lecciones li a.selected::before {
+	content: '➤ ';
 }

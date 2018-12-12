@@ -17,6 +17,7 @@
 			} else {
 				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 			}
+			/*
 			echo '<p>Escrito por ' . get_the_author_link() . ' el ' . get_post_time( 'd/m/Y' );
 			
 			// Si el post ha sido actualizado (ojo, se mira sólo la fecha y no la hora) se imprime la información
@@ -27,6 +28,7 @@
 			echo ' en ';
 			the_category(', ');
 			echo '</p>';
+			*/
 			
 		?>
 	</header><!-- .entry-header -->
@@ -34,7 +36,28 @@
 	<div class="entry-content">
 		<?php
 			if ( is_single() ) {
+
+				$iframe = get_field('pcs_youtube_url');
+
+				if ($iframe) {
+					echo do_shortcode('[my_yt_video yt_url="' . $iframe . '"]');
+				}
+
 				the_content( get_the_title() );
+
+				$urlGit = get_field('pcs_git_url');
+
+				if ($urlGit) {
+					echo '<h2>Recursos</h2>';
+					echo "<a href='$urlGit' target='_black'>Cógigo fuente</a>";
+				}
+
+				$download = get_field('pcs_descarga_asociada');
+
+				if ($download) {                  
+					echo do_shortcode('[my_cta_compra]');
+					echo do_shortcode( '[purchase_link id="' . $download->ID . '" text="Código fuente" style="button" color="blue"]');
+				}
 				
 				if ( comments_open() || get_comments_number() ) {
 					comments_template();
