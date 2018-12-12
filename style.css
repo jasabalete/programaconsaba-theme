@@ -109,6 +109,11 @@ footer .footer-hecho-en{
 	margin-bottom: 0;
 }
 
+.item-menu-disable a {
+	cursor: not-allowed !important;
+	color: #e7e7e7 !important;
+}
+
 .navbar-nav>li.item-menu-registro>a {
 	border: 1px solid #e7e7e7;
 	border-radius: 23px;
@@ -294,6 +299,9 @@ footer .footer-hecho-en{
 }
 
 /** Menú intranet **/
+.menu-menu-intranet-container {
+	margin-top: 16px;
+}
 .menu-menu-intranet-container ul {
 	list-style: none;
 	padding: 0;
