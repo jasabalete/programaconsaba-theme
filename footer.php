@@ -8,7 +8,7 @@
 ?>
 
 <footer class="container-fluid">
-	<div class="row text-center">
+	<div class="row text-center footer-container">
 		<div class="col-md-12">
 			<?= wp_nav_menu( array( 'theme_location' => 'legal-menu', 'container_class' => 'legal-menu-class' ) ); ?>
 		<div>

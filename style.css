@@ -68,6 +68,10 @@ footer {
 	width: 100%;
 }
 
+footer .footer-container {
+	background-color: #f8f8f8;
+}
+
 footer a {
 	color: #e53d46;
 }
@@ -112,6 +116,10 @@ footer .footer-hecho-en{
 .item-menu-disable a {
 	cursor: not-allowed !important;
 	color: #e7e7e7 !important;
+}
+
+.navbar-nav>li.item-menu-important>a {
+	color: #e53d46;
 }
 
 .navbar-nav>li.item-menu-registro>a {
