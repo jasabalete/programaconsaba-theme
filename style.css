@@ -385,6 +385,15 @@ footer .footer-hecho-en{
 	content: '➤ ';
 }
 
+/** Formularios contacto **/
+.wpcf7 select {
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	color: #555;
+	font-size: 14px;
+}
+
 .contact-btn-send {
 	margin-top: 12px;
 	background-color: #e53d46;
@@ -419,4 +428,17 @@ footer .footer-hecho-en{
 
 .acerca-de-imagen img{
 	border-radius: 50%;
+}
+
+.error-404 {
+	margin-top: 25px;
+}
+
+.error-404 img {
+	max-width: 626px;
+	width: 100%;
+}
+
+.grecaptcha-badge {
+	display: none;
 }

@@ -11,8 +11,8 @@ get_header ();
 ?>
 
 <div class="content-wrapper container-fluid">
-	<div class="col-md-offset-2 col-md-8 col-md-offset-2 text-center">
-		<img src="<?php echo get_theme_file_uri( '/assets/images/404.png');?>"></img>
+	<div class="col-md-offset-2 col-md-8 col-md-offset-2 text-center error-404">
+		<img src="<?php echo get_theme_file_uri( '/assets/images/404.png');?>"/>
 	</div>
 </div>
 <?php
