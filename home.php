@@ -16,11 +16,9 @@ get_header();
 
 		<?php if ( have_posts() ) { ?>
 
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
+			<header class="page-header col-md-offset-1 col-md-10 col-xs-12">
+				<h1 class="page-title">Listado de todos los tutoriales</h1>
+				<div class="archive-description text-center">¿Echas en falta algún tutorial? ¡Házmelo saber ▶ <a href="/proponer">AQUÍ</a> ◀ ! ✌</div>
 			</header><!-- .page-header -->
 
 			<div class="col-md-offset-1 col-md-10 col-xs-12">
@@ -60,6 +58,7 @@ get_header();
 						</header>
 						<div class="tutorial-excerpt">
 							<?php the_excerpt( get_the_title() ); ?>
+							<!--more-->
 						</div>
 					</article>
 				<?php
@@ -81,6 +80,8 @@ get_header();
 			?>
 				<div class="text-center">
 			<?php
+
+			echo do_shortcode('[programaconsaba_cta_registro]');
 
 			if (function_exists("programaconsaba_pagination")) {
 				programaconsaba_pagination();

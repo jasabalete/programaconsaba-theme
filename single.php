@@ -18,8 +18,19 @@ get_header();
 			the_post();
 
 			get_template_part( 'template-parts/post/content', get_post_format() );
-
-			echo do_shortcode('[my_post_navigator]');
+			
+		?>
+			<div class="row">
+		<?php
+			echo do_shortcode('[programaconsaba_cta_registro]');
+		?>
+			</div>
+			<div class="row">
+		<?php
+			echo do_shortcode('[programaconsaba_post_navigator]');
+		?>
+			</div>
+		<?php
 
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :

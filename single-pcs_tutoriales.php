@@ -73,7 +73,7 @@ the_post();
                         $download = get_field('pcs_descarga_asociada');
 
                         if ($download) {                  
-                            echo do_shortcode('[my_cta_compra]');
+                            echo do_shortcode('[programaconsaba_texto_compra]');
                             echo do_shortcode( '[purchase_link id="' . $download->ID . '" text="Código fuente" style="button" color="blue"]');
                         }
                         

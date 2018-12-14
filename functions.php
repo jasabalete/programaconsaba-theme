@@ -21,9 +21,11 @@ function programaconsaba_setup() {
 	// Menú legal para el pie de página
 	register_nav_menu('legal-menu', 'Menú Legal' );
 
-	add_shortcode( 'my_cta_compra', 'programaconsaba_texto_compra_shortcode' );
-	add_shortcode( 'my_yt_video', 'programaconsaba_yt_video_shortcode' );
-	add_shortcode( 'my_post_navigator', 'programaconsaba_post_navigator_shortcode' );
+	add_shortcode( 'programaconsaba_texto_compra', 'programaconsaba_texto_compra_shortcode' );
+	add_shortcode( 'programaconsaba_yt_video', 'programaconsaba_yt_video_shortcode' );
+	add_shortcode( 'programaconsaba_post_navigator', 'programaconsaba_post_navigator_shortcode' );
+
+	add_shortcode( 'programaconsaba_cta_registro', 'programaconsaba_cta_registro_shortcode' );
 }
 
 add_action( 'after_setup_theme', 'programaconsaba_setup');
@@ -101,6 +103,14 @@ add_action( 'template_redirect', 'programaconsaba_template_redirect' );
 /**
  * Shortcodes
  **/
+function programaconsaba_cta_registro_shortcode() {
+	return '<div class="cta-registro">' .
+				'Esto es sólo una pequeña muestra de lo que puedo ofrecerte.' .
+				'<div>✅ ¡Apúntate a los cursos gratuitos! ✅</div>' .
+				'<div class="cta-notice">▶<a href="/registrate">¡Regístrate GRATIS aquí y aprende cómo lo hago!</a>◀</div>' .
+			'</div>';
+}
+
 function programaconsaba_texto_compra_shortcode() {
 	return '<div class="cta-compra">¿Te gusta lo que ves? ¿Quieres el código fuente? Puedes comprar el código fuente para que te quede todo mucho más claro. <span class="cta-notice">Con la compra me ayudas a dejar esta página libre de publicidad y me animas a seguir creando contenidos</span></div>';
 }
@@ -180,11 +190,6 @@ add_filter( 'get_the_archive_title', function ($title) {
     return $title;
 });
 
-// Se oculta la barra de administración
-if (!isset($_GET['admin_bar'])){
-	show_admin_bar(false);
-}
-
 // Se añade la opción de menú de logout si el usuario está logado
 add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2);
 
@@ -199,4 +204,16 @@ function add_login_logout_link($items, $args) {
 	}
 	
 	return $items;
+}
+
+function the_excerpt_more_link( $excerpt ){
+    $post = get_post();
+    $excerpt .= '<a href="'. get_permalink($post->ID) . '">SEGUIR LEYENDO ➤</a>';
+    return $excerpt;
+}
+add_filter( 'the_excerpt', 'the_excerpt_more_link', 21 );
+
+// Se oculta la barra de administración en producción, excepto cuando viene el parámetro admin_bar
+if (get_site_url() === 'https://programaconsaba.com' && !isset($_GET['admin_bar'])){
+	show_admin_bar(false);
 }

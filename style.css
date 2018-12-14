@@ -33,8 +33,23 @@ header h1 {
 	text-align: center;
 }
 
+.archive-description a {
+	color: #e53d46;
+}
+
 .list-pagination {
 	margin-bottom: 100px;
+}
+
+.cta-registro{
+	background-color: #FFD700;
+	color: #000;
+	padding: 10px;
+	border: 1px solid #534926;
+	border-radius: 3px;
+	margin: auto;
+	text-align: center;
+	max-width: 1000px;
 }
 
 .cta-compra{
@@ -54,6 +69,11 @@ header h1 {
 	margin-top: 10px;
 	text-align: center;
 	text-decoration: underline;
+}
+
+.cta-notice a {
+	text-decoration: none;
+	color: #000;
 }
 
 footer {
@@ -225,6 +245,12 @@ footer .footer-hecho-en{
 	text-align: center;
 	max-width: 528px; /** tamaño del thumbnail **/
 	margin: auto;
+}
+
+.article-list .tutorial-excerpt a {
+	font-family: 'VT323', monospace;
+	font-size: 25px;
+	color: #e53d46;
 }
 
 .post-navigator {

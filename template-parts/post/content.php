@@ -40,7 +40,7 @@
 				$iframe = get_field('pcs_youtube_url');
 
 				if ($iframe) {
-					echo do_shortcode('[my_yt_video yt_url="' . $iframe . '"]');
+					echo do_shortcode('[programaconsaba_yt_video yt_url="' . $iframe . '"]');
 				}
 
 				the_content( get_the_title() );
@@ -55,7 +55,7 @@
 				$download = get_field('pcs_descarga_asociada');
 
 				if ($download) {                  
-					echo do_shortcode('[my_cta_compra]');
+					echo do_shortcode('[programaconsaba_texto_compra]');
 					echo do_shortcode( '[purchase_link id="' . $download->ID . '" text="Código fuente" style="button" color="blue"]');
 				}
 				
