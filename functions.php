@@ -104,11 +104,16 @@ add_action( 'template_redirect', 'programaconsaba_template_redirect' );
  * Shortcodes
  **/
 function programaconsaba_cta_registro_shortcode() {
-	return '<div class="cta-registro">' .
-				'Esto es sólo una pequeña muestra de lo que puedo ofrecerte.' .
-				'<div>✅ ¡Apúntate a los cursos gratuitos! ✅</div>' .
-				'<div class="cta-notice">▶<a href="/registrate">¡Regístrate GRATIS aquí y aprende cómo lo hago!</a>◀</div>' .
-			'</div>';
+	$txt = '';
+	if(!is_user_logged_in()){
+		$txt = '<div class="cta-registro">' .
+					'Esto es sólo una pequeña muestra de lo que puedo ofrecerte.' .
+					'<div>¡Apúntate a los cursos gratuitos!</div>' .
+					'<div class="cta-notice">▶<a href="/registrate">¡Regístrate GRATIS aquí y aprende cómo lo hago!</a>◀</div>' .
+				'</div>';
+	}
+
+	return $txt;
 }
 
 function programaconsaba_texto_compra_shortcode() {

@@ -26,8 +26,17 @@ get_header ();
 					if (is_user_logged_in()) {
 						get_template_part ( 'template-parts/page/content', 'intranet' );
 					} else {
-						$path = "//" . $_SERVER ['HTTP_HOST'] . $_SERVER ['REQUEST_URI'];
-						echo do_shortcode ( "[edd_login redirect='$path']" );
+						?>
+						<div class="custom-registro-placeholder">
+						<?php
+							$path = "//" . $_SERVER ['HTTP_HOST'] . $_SERVER ['REQUEST_URI'];
+							echo '<div class="bg-danger text-center">No puedes acceder al área privada</div>';
+							echo '<p>¿No tienes cuenta? <a href="/registrate/">Regístrate</a></p>';
+							echo do_shortcode ( "[edd_login redirect='$path']" );
+						?>
+						</div>
+						<?php
+
 					}
 				} else {
 					get_template_part ( 'template-parts/page/content', 'page' );

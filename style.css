@@ -41,11 +41,15 @@ header h1 {
 	margin-bottom: 100px;
 }
 
-.cta-registro{
-	background-color: #FFD700;
+.custom-registro-placeholder {
+	margin-top: 16px;
+}
+
+.cta-registro {
+	background-color: #46e53d;
 	color: #000;
 	padding: 10px;
-	border: 1px solid #534926;
+	border: 1px solid #22701e;
 	border-radius: 3px;
 	margin: auto;
 	text-align: center;
@@ -53,10 +57,10 @@ header h1 {
 }
 
 .cta-compra{
-	background-color: #f09426;
+	background-color: #3de5dc;
 	color: #fff;
 	padding: 10px;
-	border: 1px solid gray;
+	border: 1px solid #1e6966;
 	border-radius: 3px;
 	margin: 0;
 	text-align: center;
