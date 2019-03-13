@@ -89,7 +89,7 @@ function programaconsaba_pagination(){
 	
 	echo $pagination;
 }
-
+/*
 function programaconsaba_template_redirect() {
 	global $wp;
     if( $wp->request == 'changelog' ) {
@@ -99,7 +99,7 @@ function programaconsaba_template_redirect() {
 }
 
 add_action( 'template_redirect', 'programaconsaba_template_redirect' );
-
+*/
 /**
  * Shortcodes
  **/
