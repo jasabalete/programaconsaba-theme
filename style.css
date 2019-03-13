@@ -519,6 +519,8 @@ footer .footer-hecho-en {
 	border-top: 1px solid #e7e7e7;
 	margin-top: 30px;
 	padding-top: 30px;
+	margin-bottom: 30px;
+	padding-bottom: 30px;
 	font-family: 'VT323', monospace;
 	font-size: 20px;
 }
@@ -605,4 +607,13 @@ footer .footer-hecho-en {
 
 .pcs-link a, .comment-respond a {
 	color: #e53d46;
+}
+
+.portada-podcast {
+	text-align: center;
+}
+
+.portada-podcast h2 {
+	font-family: 'VT323', monospace;
+	font-size: 35px;
 }
