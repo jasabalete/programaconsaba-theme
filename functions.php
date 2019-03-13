@@ -222,3 +222,13 @@ add_filter( 'the_excerpt', 'the_excerpt_more_link', 21 );
 if (get_site_url() === 'https://programaconsaba.com' && !isset($_GET['admin_bar'])){
 	show_admin_bar(false);
 }
+
+// Correo electrónico de Olvidó su clave. Se añade texto legal.
+add_filter( 'retrieve_password_message', 'replace_retrieve_password_message', 10, 4 );
+
+function replace_retrieve_password_message( $message, $key, $user_login, $user_data ) {
+	$message .= '---' . "\r\n\r\n";
+	$message .= 'De conformidad con el reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protección de datos o RGPD), le recordamos que sus datos son objeto de tratamiento por parte de José Antonio Sabalete Mármol. Estos datos son gestionados con la finalidad de informar y comunicar todo aquello relativo a la prestación de mis servicios profesionales y actividades relacionadas con la web https://programaconsaba.com. Recibes este correo porque me has facilitado y/o cedido voluntariamente tu dirección electrónica. No obstante, puedes ejercer tus derechos de acceso, rectificación, limitación, supresión, portabilidad y oposición al tratamiento de sus datos enviando un email a jasabalete@programaconsaba.com (poniendo en el asunto “Ejercicio de derechos" y adjuntando una copia de su DNI). Dispone también del derecho a presentar una reclamación ante una autoridad de control. Recuerda que todos tus datos serán tratados con la máxima confidencialidad y conforme al RGPD, y la Ley 34/2002 de Servicios de la sociedad de la información y de comercio electrónico (LSSI-CE).' . "\r\n\r\n";
+ 
+    return $message;
+}

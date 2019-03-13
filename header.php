@@ -24,6 +24,7 @@
 						src="<?php echo get_theme_file_uri( '/assets/images/logo-programaconsaba.png' )?>"
 						alt="Programa con Saba" /></a>
 				</h1>
+				<div id="ribete"></div>
 			</div>
 			<div class="row">
 				<nav class="navbar navbar-default" role="navigation">

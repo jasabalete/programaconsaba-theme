@@ -18,6 +18,7 @@ get_header();
 
 			<header class="page-header col-md-offset-1 col-md-10 col-xs-12">
 				<h1 class="page-title">Listado de todos los tutoriales</h1>
+				<div class="archive-description text-center">Todo lo que necesitas saber sobre <a href="/blog/java">Java</a>, <a href="/blog/javascript">JavaScript</a> y <a href="/blog/wordpress">Wordpress</a> para 🔥 <a href="/registrate">MARCAR LA DIFERENCIA</a> 🔥
 				<div class="archive-description text-center">¿Echas en falta algún tutorial? ¡Házmelo saber ▶ <a href="/proponer">AQUÍ</a> ◀ ! ✌</div>
 			</header><!-- .page-header -->
 
@@ -38,7 +39,7 @@ get_header();
 				
 				$i ++;
 				?>
-					<article class="article-list col-md-6 col-xs-12">
+					<article class="article-list col-md-4 col-xs-12">
 						<header class="text-center">
 						
 								<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">

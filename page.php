@@ -31,8 +31,8 @@ get_header ();
 						<?php
 							$path = "//" . $_SERVER ['HTTP_HOST'] . $_SERVER ['REQUEST_URI'];
 							echo '<div class="bg-danger text-center">No puedes acceder al área privada</div>';
-							echo '<p>¿No tienes cuenta? <a href="/registrate/">Regístrate</a></p>';
-							echo do_shortcode ( "[edd_login redirect='$path']" );
+							echo '<p>¿Tienes cuenta? <a href="/accede/">Inicia sesión</a></p>';
+							echo do_shortcode ( "[edd_register redirect='/tu-area-privada?nuevo=1']" );
 						?>
 						</div>
 						<?php

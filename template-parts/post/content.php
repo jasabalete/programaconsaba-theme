@@ -58,11 +58,31 @@
 					echo do_shortcode('[programaconsaba_texto_compra]');
 					echo do_shortcode( '[purchase_link id="' . $download->ID . '" text="Código fuente" style="button" color="blue"]');
 				}
-				
-				if ( comments_open() || get_comments_number() ) {
-					comments_template();
-				}
-				
+
+				$codigoFuente = get_field('pcs_codigo_fuente');
+
+				if ($codigoFuente){ 
+				?>
+					<div class="row text-center codigo-Fuente">
+						<p>¿No te ha quedado del todo clara la explicación?</p>
+						<p>¡Aquí tienes el codigo fuente para que no tengas dudas!</p>
+						<p>👇👇👇</p>
+						<div class="wp-block-button aligncenter is-style-squared">
+							<?php
+							if(is_user_logged_in()){
+							?>
+								<a class="wp-block-button__link has-text-color has-very-light-gray-color has-background" href="<?=$codigoFuente['url']?>" target="_black" style="background-color:#e53d46">Descargar cógigo fuente<br></a>
+							<?php
+							} else {
+							?>
+								<a class="wp-block-button__link has-text-color has-very-light-gray-color has-background" href="/registrate" target="_black" style="background-color:#e53d46">Descargar cógigo fuente<br></a>
+							<?php
+							}
+							?>
+						</div>
+					</div>
+				<?php 
+				}				
 			} else {
 				the_excerpt( get_the_title() );
 			}
