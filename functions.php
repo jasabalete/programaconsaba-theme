@@ -232,3 +232,26 @@ function replace_retrieve_password_message( $message, $key, $user_login, $user_d
  
     return $message;
 }
+/*
+// INI SEGURIDAD
+add_action( 'send_headers', 'add_header_seguridad' );
+
+function add_header_seguridad() {
+	header( 'X-Content-Type-Options: nosniff' );
+	header( 'X-Frame-Options: SAMEORIGIN' );
+	header( 'X-XSS-Protection: 1;mode=block' );
+}
+
+function my_authenticate($user, $username, $password){
+	if(isset($_POST['sec']) && $_POST['sec'] == 'saba'){
+		return $user;
+	} else {
+		status_header( 401, 'Fuck try again / Hacker de mierda, prueba otra cosa :)' );
+		wp_mail('jasabalete@programaconsaba.com', 'Intento de acceso no autorizado', print_r($_SERVER, true) . '-------' . PHP_EOL . '-------' . print_r($_POST, true));		
+		die();
+	}
+}
+//add_filter('authenticate', 'my_authenticate', 10, 3);
+
+// FIN SEGURIDAD
+*/
